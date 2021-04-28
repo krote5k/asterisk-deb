@@ -1,8 +1,8 @@
-ARG osdistro=debian
-ARG oscodename=buster
+ARG osdistro=ubuntu
+ARG oscodename=bionic
 FROM $osdistro:$oscodename
 # FROM $(os):$(oscodename)
-MAINTAINER Walter Doekes <wjdoekes+asterisk-deb@osso.nl>
+MAINTAINER Dmitriy Q <krotesk@mail.ru>
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -21,12 +21,12 @@ RUN apt-get update -q && apt-get install -y \
     build-essential dh-autoreconf devscripts dpkg-dev equivs quilt
 
 # Import ARGs
-ARG osdistro=debian
-ARG oscodename=buster
+ARG osdistro=ubuntu
+ARG oscodename=bionic
 ARG upname=asterisk
-ARG upversion=11.25.3
+ARG upversion=16.17.0
 ARG debepoch=1:
-ARG debversion=0osso1
+ARG debversion=0atsip1
 
 # Copy debian dir, check version
 RUN mkdir -p /build/debian

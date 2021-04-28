@@ -29,13 +29,13 @@ OSSO сборка пакетов Asterisk для Debian
 Настройка среды сборки
 ------------------------------
 
-Installing build prerequisites:
+Установка предварительных условий сборки:
 
 .. code-block:: console
 
     # apt-get install debhelper dpkg-dev quilt build-essential
 
-Installing build dependencies (11-jessie):
+Установка зависимостей сборки (11-Джесси ??):
 
 .. code-block:: console
 
@@ -51,7 +51,7 @@ Installing build dependencies (11-jessie):
         libedit-dev
     # apt-get install libpjproject-dev
 
-Ensure that you have a sane ``.quiltrc`` so you can test the quilt patches.
+Убедитесь, что у вас есть нормальный ```.quiltrc``, чтобы вы могли протестировать патчи для quilt.
 
 .. code-block:: console
 
@@ -68,12 +68,12 @@ Ensure that you have a sane ``.quiltrc`` so you can test the quilt patches.
 Preparing an Asterisk build
 ---------------------------
 
-Fetching the latest Asterisk, creating a local scratchpad repository and
-moving the ``debian/`` dir to the untarred Asterisk source.
+Извлечение последней версии Asterisk, создание локального репозитория scratchpad
+и перемещение каталога ``debian/`` в незапятнанный источник Asterisk.
 
 .. code-block:: console
 
-    $ VERSION=11.20.0
+    $ VERSION=16.17.0
     $ wget "http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-${VERSION}.tar.gz" \
         -O "asterisk_${VERSION}.orig.tar.gz"
     $ tar zxf "asterisk_${VERSION}.orig.tar.gz"
@@ -85,14 +85,14 @@ moving the ``debian/`` dir to the untarred Asterisk source.
 
     $ cp -a ~/asterisk-deb/debian debian  # or use a bind-mount
 
-Test that all patches apply:
+Проверка что применяются все патчи:
 
 .. code-block:: console
 
     $ quilt push -a
 
-Refreshing the quilt patches (optional). By altering the ``'Now at patch'``
-needle you can refresh from a certain patch (your own?) and onwards.
+Обновление патчей quilt (необязательно). Альтернативно  ``'Now at patch'``,
+вы можете обновить ее с определенного патча (вашего собственного?) и далее.
 
 .. code-block:: console
 
@@ -102,7 +102,7 @@ needle you can refresh from a certain patch (your own?) and onwards.
 
 
 
-Compiling the Asterisk packages
+Компиляция пакетов Asterisk
 -------------------------------
 
 After preparing the build, there is nothing more to do except run
@@ -133,13 +133,13 @@ this:
 
 
 
-Quilting and patching
+Quilting и патчинг
 ---------------------
 
-If you want to add/change source, you can append to the Debian quilt patches.
+Если вы хотите добавить/изменить источник, вы можете добавить патчи Debian quilt.
 
-You'll want to test this on a locally compiled build, without packaging it
-for every change. Set up your build like this:
+Вы должны протестировать это на локально скомпилированной сборке, не упаковывая
+ее для каждого изменения. Настройте свою сборку следующим образом:
 
 .. code-block:: console
 
@@ -149,8 +149,9 @@ for every change. Set up your build like this:
     $ git fetch --all   # make sure we also fetch all tags
     $ cp -a ~/asterisk-deb/debian debian  # or use a bind-mount
 
-Select the version. Depending on what you previously did, you'll need only some
-of these. Consult your local source of git knowledge for more information.
+Выберите версию. В зависимости от того, что вы делали ранее, вам понадобятся
+только некоторые из них. Для получения дополнительной информации обратитесь
+к местному источнику знаний git.
 
 .. code-block:: console
 
@@ -158,18 +159,18 @@ of these. Consult your local source of git knowledge for more information.
     $ git checkout .    # drops all changes
     $ git clean -fdxe debian   # drop all untracked files except 'debian/'
 
-    $ VERSION=11.20.0
+    $ VERSION=16.17.0
     $ git checkout -b local-${VERSION} ${VERSION}   # branch tag 11.20.0 onto local-11.20.0
 
-First, you have to patch all of the Debian/OSSO changes. Commit the quilted
-stuff so it's not in the way when you start editing.
+Во-первых, вы должны исправить все изменения Debian/OSSO. Зафиксируйте
+quilted вещи, чтобы они не мешали, когда вы начнете редактировать.
 
 .. code-block:: console
 
     $ quilt push -a
     $ git commit -m "WIP: asterisk-deb quilted"
 
-Now you can start changing stuff, compiling, installing. Et cetera.
+Теперь вы можете начать изменять материал, компилировать, устанавливать. И так далее.
 
 .. code-block:: console
 
@@ -181,7 +182,7 @@ Now you can start changing stuff, compiling, installing. Et cetera.
 
     $ make && sudo make install
 
-When you're happy with the result, you write the changes to a Debian patch file:
+Когда вы довольны результатом, то записываем изменения в патч-файл Debian:
 
 .. code-block:: console
 
@@ -190,19 +191,18 @@ When you're happy with the result, you write the changes to a Debian patch file:
     $ git checkout .    # drop the local changes
     $ quilt push        # reapply the changes, using quilt
 
-For bonus points, you'll edit your newly generated ``debian/patches/my-awesome-changes.patch``
-and add appropriate header values as described in
-`DEP3, Patch Tagging Guidelines <http://dep.debian.net/deps/dep3/>`_.
+Для получения бонусных баллов вы отредактируете недавно сгенерированный
+``debian/patches/my-awesome-changes.patch`` и добавьте соответствующие значения заголовка,
+как описано в `Руководстве по тегированию исправлений DEP3 <http://dep.debian.net/deps/dep3/>`_.
 
-Store your updated patches in your own repository, and rebase your changes
-against changes in ``asterisk-deb``.
+Храните обновленные патчи в своем собственном репозитории и перебазируйте
+изменения в соответствии с изменениями в ``asterisk-deb``.
 
 
+Известные проблемы
+------------------
 
-Known problems
---------------
-
-After quilting or a failed build, you may run into this::
+После квилтинга или неудачной сборки вы можете столкнуться с этим::
 
     make[1]: Entering directory '/home/osso/asterisk/asterisk-11.25.1'
     if [ ! -r configure.debian_sav ]; then cp -a configure configure.debian_sav; fi
@@ -210,26 +210,22 @@ After quilting or a failed build, you may run into this::
     debian/rules:76: recipe for target 'override_dh_autoreconf' failed
     make[1]: *** [override_dh_autoreconf] Error 1
 
-That is fixed either by forcing configure to be back in place, or simply by
-using a pristine Asterisk source directory.
+Это исправляется либо путем принудительного возвращения конфигурации на место,
+либо просто с помощью нетронутого исходного каталога Asterisk.
 
+Установка и конфигурирование
+----------------------------
 
+Смотри ``INSTALL.rst`` в этом каталоге для получения советов о том, как его установить.
 
-Installing and configuring
---------------------------
-
-See ``INSTALL.rst`` in this directory for tips on how to install it.
-
-
-
-Using the OSSO ppa
+Использование OSSO ppa
 ------------------
 
-If you're happy with these files without any additional changes,
-you can fetch precompiled binary packages from the OSSO ppa if you like.
+Если вы довольны этими файлами без каких-либо дополнительных изменений,
+вы можете получить предварительно скомпилированные двоичные пакеты из OSSO ppa, если хотите.
 
-USE IT AT YOUR OWN RISK. OSSO DOES NOT GUARANTEE AVAILABILITY OF THE SERVER.
-OSSO DOES NOT GUARANTEE THAT THE FILES ARE SANE.
+ИСПОЛЬЗУЙТЕ ЕГО НА СВОЙ СТРАХ И РИСК. OSSO НЕ ГАРАНТИРУЕТ ДОСТУПНОСТЬ СЕРВЕРА.
+OSSO НЕ ГАРАНТИРУЕТ, ЧТО ФАЙЛЫ ЯВЛЯЮТСЯ ВМЕНЯЕМЫМИ.
 
 .. code-block:: console
 
