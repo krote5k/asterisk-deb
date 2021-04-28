@@ -4,19 +4,11 @@ OSSO сборка пакетов Asterisk для Debian
 Содержит каталог ``debian/`` необходимый для создания пакета Debian (или Ubuntu)
 конкретных версий `Asterisk PBX <http://www.asterisk.org/>`_.
 
-Place the debian dir inside the extracted Asterisk tarball and to create
-the necessary ``*.deb`` files. See detailed instructions below.
+Поместите в каталог debian распакованный архив Asterisk и создайте необходимые файлы ``*.deb``. Смотрите подробные инструкции ниже.
 
-Much thanks to the Debian team for creating the initial files and
-sharing them! The starting point for for this ``debian/`` dir is
-taken from the `Debian AnonSCM repository
-<http://anonscm.debian.org/cgit/pkg-voip/asterisk.git>`_.
+Большое спасибо команде Debian за создание исходных файлов и обмен ими! Отправная точка для этого каталога ``debian/`` взята из `репозитория Debian AnonSCM <http://anonscm.debian.org/cgit/pkg-voip/asterisk.git>`_.
 
-If you're happy with these files without any additional changes,
-you can get precompiled binary packages from the *OSSO ppa*
-directly. See `Using the OSSO ppa <#user-content-using-the-osso-ppa>`_.
-
-
+Если вы довольны этими файлами без каких-либо дополнительных изменений, то можете получить предварительно скомпилированные бинарные пакеты непосредственно из *OSSO ppa*. См.раздел _`Использование OSSO ppa <#user-content-using-the-osso-ppa>`_.
 
 Building with Docker
 --------------------
