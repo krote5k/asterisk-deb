@@ -1,9 +1,8 @@
-OSSO build of Asterisk packages for Debian
+OSSO сборка пакетов Asterisk для Debian
 ==========================================
 
-This contains the ``debian/`` dir you need to create Debian (or Ubuntu)
-packages of specific versions of the `Asterisk PBX
-<http://www.asterisk.org/>`_.
+Содержит каталог ``debian/`` необходимый для создания пакета Debian (или Ubuntu)
+конкретных версий `Asterisk PBX <http://www.asterisk.org/>`_.
 
 Place the debian dir inside the extracted Asterisk tarball and to create
 the necessary ``*.deb`` files. See detailed instructions below.
