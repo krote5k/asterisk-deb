@@ -1,15 +1,15 @@
-Install of OSSO build of Asterisk packages for Debian
-=====================================================
+Установка сборки пакетов Asterisk для Ubuntu
+============================================
 
-If you don't have the ``*.deb`` packages or a repository that hosts
-those, then *please see README.rst first*.
+Если у вас нет пакетов ``*.deb`` или репозитория, в котором они
+размещены, то *пожалуйста, сначала обратитесь к README.rst*.
 
-Installing Asterisk from a custom generated Debian package should be about as
-simple as a regular Asterisk install from the Debian packages.
+Установка Asterisk из пользовательского пакета Debian должна быть
+примерно такой же простой, как обычная установка Asterisk из пакетов Debian.
 
-If you're using a repository to host the ``*.deb`` files, an
-``apt-get install`` of the ``asterisk`` package should give you these
-installed modules::
+Если вы используете репозиторий для размещения файлов ``*.deb``,
+``apt-get install`` для пакета ``asterisk`` должна предоставить вам эти установленные модули::
+
 
     ii  asterisk                       1:11.20.0-osso0~jessie
     ii  asterisk-config                1:11.20.0-osso0~jessie
@@ -19,12 +19,12 @@ installed modules::
     ii  asterisk-moh-opsound-gsm       2.03-1
     ii  asterisk-voicemail             1:11.20.0-osso0~jessie
 
-(The versions may differ.)
+(Версии могут различаться.)
 
 
 
-Create initial config
----------------------
+Создание начальной конфигурации
+-------------------------------
 
 Normally, ``/etc/asterisk`` would be populated with lots of example
 config files. In this build, it is not.
@@ -181,20 +181,19 @@ and add it to startup.d:
 Note that new files in ``/etc/asterisk/startup.d`` require a full daemon restart
 to get picked up.
 
-
-
-Connecting to Asterisk
+Подключение к Asterisk
 ----------------------
 
-You can connect to your locally running Asterisk instance with ``asterisk -r``.
-Type ``core show help`` there to get more info.
+Вы можете подключиться к локально запущенному экземпляру Asterisk с помощью
+``asterisk -r``. Введите ``core show help``, чтобы получить дополнительную информацию.
 
-The web is full of information how how to configure your Asterisk instance properly.
+В Интернете полно информации о том, как правильно настроить Asterisk.
 
-You'll probably spend most of your editing time in ``sip.conf`` (or the newer
-pjsip version, if you're using Asterisk 13 or newer) and ``extensions.conf``.
+Вы, вероятно, потратите большую часть своего времени на редактирование в ``sip.conf``
+(или более новой версии pjsip, если вы используете Asterisk 13 или новее) и ``extensions.conf``.
 
-Good luck!
+Удачи!
+
 
 
 /Walter Doekes <wjdoekes+asterisk-deb@osso.nl>  Tue, 27 Oct 2015 15:15:54 +0100

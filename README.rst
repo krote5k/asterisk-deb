@@ -80,10 +80,10 @@ OSSO сборка пакетов Asterisk для Debian
 
     $ cd asterisk-${VERSION}
     $ git init
-    $ git add -fA   # adds all files, even the .gitignored ones
+    $ git add -fA   # добавляет все файлы, даже файлы .gitignored
     $ git commit -m "clean ${VERSION}"
 
-    $ cp -a ~/asterisk-deb/debian debian  # or use a bind-mount
+    $ cp -a ~/asterisk-deb/debian debian  # или используйте bind-mount
 
 Проверка что применяются все патчи:
 
