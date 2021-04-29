@@ -2,7 +2,7 @@ ARG osdistro=ubuntu
 ARG oscodename=bionic
 FROM $osdistro:$oscodename
 # FROM $(os):$(oscodename)
-MAINTAINER Dmitriy Q <krotesk@mail.ru>
+MAINTAINER Walter Doekes <wjdoekes+asterisk-deb@osso.nl>
 
 ENV DEBIAN_FRONTEND noninteractive
 

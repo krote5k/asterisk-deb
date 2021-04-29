@@ -105,20 +105,20 @@ OSSO сборка пакетов Asterisk для Debian
 Компиляция пакетов Asterisk
 -------------------------------
 
-After preparing the build, there is nothing more to do except run
-``dpkg-buildpackage`` and wait.
+После подготовки сборки больше ничего не остается, кроме запуска
+``dpkg-buildpackage`` и ожидания.
 
-Before this step, you can add/edit your own patches. See
-`Quilting and patching_` below.
-Don't forget to update the ``changelog`` if you change anything.
+Перед этим шагом вы можете добавить/отредактировать свои собственные патчи.
+См. раздел `Quilting и патчинг_` ниже.
+Не забудьте обновить ``changelog``, если вы что-то измените.
 
 .. code-block:: console
 
     $ #vim debian/changelog
     $ DEB_BUILD_OPTIONS=parallel=6 dpkg-buildpackage -us -uc
 
-If you want to build locally to test, instead of building a package, you'll do
-this:
+Если вы хотите собрать локально для тестирования, вместо того,
+чтобы создавать пакет, можете сделать так:
 
 .. code-block:: console
 
