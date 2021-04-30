@@ -26,7 +26,7 @@ ARG oscodename=bionic
 ARG upname=asterisk
 ARG upversion=16.17.0
 ARG debepoch=1:
-ARG debversion=0atsip1
+ARG debversion=0atsip2
 
 # Copy debian dir, check version
 RUN mkdir -p /build/debian

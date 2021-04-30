@@ -1,4 +1,4 @@
-asterisk (1:16.17.0-0atsip1+u18.04) bionic; urgency=medium
+asterisk (1:16.17.0-0atsip2+ubu18.04) bionic; urgency=medium
 
   * Krotesk build of 16.17.0 for Bionic (with gn patches)
   * Refreshes: codec_amr.patch, but codec_amr.so is/was not enabled.

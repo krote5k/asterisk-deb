@@ -6,7 +6,7 @@ osdistro=ubuntu
 oscodename=bionic
 upname=asterisk
 upversion=${1:-16.17.0}  # asterisk version, e.g. 13.22.0
-debversion=${2:-0atsip1}  # deb build version, e.g. 0osso1
+debversion=${2:-0atsip2}  # deb build version, e.g. 0osso1
 # echo "Usage: $0 11.25.3 0osso1" >&2
 
 # Docker disallows certain tokens in versions.
